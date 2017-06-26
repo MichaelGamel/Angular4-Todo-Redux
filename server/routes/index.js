@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+/** first service retrieves array of todos */
 router.get('/', (req, res) => {
     let todo = [
         {_id: 1, title: 'finish Redux App', description: 'test description', isCompleted: false },
@@ -9,4 +10,5 @@ router.get('/', (req, res) => {
     res.send(todo);
 });
 
+/** to expose the service functionality */
 module.exports = router;
