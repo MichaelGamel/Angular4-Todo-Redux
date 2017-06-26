@@ -1,0 +1,16 @@
+import { ClientPage } from './app.po';
+
+describe('client App', () => {
+  let page: ClientPage;
+
+  beforeEach(() => {
+    page = new ClientPage();
+  });
+
+  it('should display welcome message', done => {
+    page.navigateTo();
+    page.getParagraphText()
+      .then(msg => expect(msg).toEqual('Welcome to app!!'))
+      .then(done, done.fail);
+  });
+});
