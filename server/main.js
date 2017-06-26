@@ -1,10 +1,9 @@
-// like usning in .net (using (just import) existing packages inside package.json)
+// like using in .net (using (just import) existing packages inside package.json)
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-// custom modules
-/** */
+/** custom modules */
 const api = require('./routes');
 
 // change the default promise of mongoos with the promise of global
