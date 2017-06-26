@@ -1,3 +1,4 @@
+import { TodosService } from './todos.service';
 import { TodosRoutingModule } from './todo-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -10,6 +11,7 @@ import { ListTodoComponent } from './list-todo/list-todo.component';
     CommonModule,
     TodosRoutingModule
   ],
-  declarations: [TodosComponent, AddTodoComponent, ListTodoComponent]
+  declarations: [TodosComponent, AddTodoComponent, ListTodoComponent],
+  providers:[TodosService]
 })
 export class TodosModule { }

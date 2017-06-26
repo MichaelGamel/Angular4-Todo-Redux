@@ -1,5 +1,6 @@
+import { ITodo } from './../../shared/models/ITodo.interface';
+import { TodosService } from './../todos.service';
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-list-todo',
   templateUrl: './list-todo.component.html',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListTodoComponent implements OnInit {
 
-  constructor() { }
+  todos: ITodo[];
+
+  constructor(private todoService: TodosService) { }
 
   ngOnInit() {
+    this.todoService.getAll().subscribe((result) => {
+      this.todos = result;
+    })
   }
 
 }
