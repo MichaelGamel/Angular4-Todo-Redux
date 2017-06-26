@@ -1,6 +1,6 @@
 <div class="input-group">
-  <input type="text" class="form-control" placeholder="Todo Title">
+  <input type="text" class="form-control" placeholder="Todo Title" #item (keypress)="send($event,item)">
   <span class="input-group-btn">
-        <button class="btn btn-primary" type="button">Add</button>
+        <button class="btn btn-primary" type="button" (click)="submit(item)">Add</button>
   </span>
 </div>

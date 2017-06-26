@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-add-todo',
@@ -7,9 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddTodoComponent implements OnInit {
 
+  @Output()
+  sendItem: EventEmitter<string> = new EventEmitter<string>();
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  submit(item: HTMLInputElement) {
+    this.sendItem.emit(item.value);
+    item.value = '';
+    item.focus();
+  }
+
+  send(e, item: HTMLInputElement) {
+    if (e.keyCode === 13) {
+      this.submit(item);
+    }
   }
 
 }

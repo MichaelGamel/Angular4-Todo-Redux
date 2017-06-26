@@ -1,4 +1,6 @@
+import { ITodo } from './../shared/models/ITodo.interface';
 import { Component, OnInit } from '@angular/core';
+import { TodosService } from './todos.service';
 
 @Component({
   selector: 'app-todos',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodosComponent implements OnInit {
 
-  constructor() { }
+  todos: ITodo[];
+
+  constructor(private todoService: TodosService) { }
 
   ngOnInit() {
+    this.todoService.getAll().subscribe((result) => {
+      this.todos = result;
+    })
+  }
+
+  addItem(item: string) {
+    this.todoService.addTodo(item).subscribe();
   }
 
 }
