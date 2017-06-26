@@ -4,7 +4,12 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    children: []
+    redirectTo: 'todos',
+    pathMatch: 'full'
+  },
+  {
+    path: 'todos',
+    loadChildren: "app/todos/todos.module#TodosModule"
   }
 ];
 
