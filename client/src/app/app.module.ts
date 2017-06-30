@@ -6,6 +6,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
+import { IAppStore, rootReducer, INITIAL_STATE } from './store';
+import { NgRedux, NgReduxModule } from 'ng2-redux';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,9 +18,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     HttpModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgReduxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(private ngRedux: NgRedux<IAppStore>) {
+    this.ngRedux.configureStore(rootReducer, INITIAL_STATE);
+  }
+}
