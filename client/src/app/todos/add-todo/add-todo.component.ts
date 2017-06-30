@@ -1,7 +1,7 @@
 import { TodosService } from './../todos.service';
 import { IAppStore } from './../../store';
 import { NgRedux } from 'ng2-redux';
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { ExplainerAnim } from '../../shared/animation/animate-inputs';
 
 @Component({
@@ -10,15 +10,9 @@ import { ExplainerAnim } from '../../shared/animation/animate-inputs';
   styleUrls: ['./add-todo.component.css'],
   animations: ExplainerAnim
 })
-export class AddTodoComponent implements OnInit {
-
-  @Output()
-  sendItem: EventEmitter<string> = new EventEmitter<string>();
+export class AddTodoComponent {
 
   constructor(private todoService: TodosService, private ngRedux: NgRedux<IAppStore>) { }
-
-  ngOnInit() {
-  }
 
   submit(item: HTMLInputElement) {
     this.todoService.addTodo(item.value);
