@@ -1,4 +1,4 @@
-import { ADD_TODO } from './../actions/todo.actions';
+import { TodosService } from './../todos.service';
 import { IAppStore } from './../../store';
 import { NgRedux } from 'ng2-redux';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
@@ -15,15 +15,13 @@ export class AddTodoComponent implements OnInit {
   @Output()
   sendItem: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor(private ngRedux: NgRedux<IAppStore>) { }
+  constructor(private todoService: TodosService, private ngRedux: NgRedux<IAppStore>) { }
 
   ngOnInit() {
   }
 
   submit(item: HTMLInputElement) {
-    //this.sendItem.emit(item.value);
-
-    this.ngRedux.dispatch({ type: ADD_TODO, item: item.value });
+    this.todoService.addTodo(item.value);
     item.value = '';
     item.focus();
   }

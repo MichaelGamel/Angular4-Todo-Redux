@@ -1,5 +1,12 @@
-export const LOAD_TODOS = 'LOAD_TODOS';
-export const ADD_TODO = 'ADD_TODO';
+export const FETCH_TODOS_LOADING = 'FETCH_TODOS_LOADING';
+export const FETCH_TODOS_SUCCESS = 'FETCH_TODOS_SUCCESS';
+export const FETCH_TODOS_ERROR = 'FETCH_TODOS_ERROR';
+
+export const ADD_TODO_LOADING = 'ADD_TODO_LOADING';
+export const ADD_TODO_SUCCESS = 'ADD_TODO_SUCCESS';
+export const ADD_TODO_ERROR = 'ADD_TODO_ERROR';
+
+
 export const UPDATE_TODO = 'UPDATE_TODO';
 export const DELETE_TODO = 'DELETE_TODO';
 export const CLEAR_TODO = 'CLEAR_TODO';

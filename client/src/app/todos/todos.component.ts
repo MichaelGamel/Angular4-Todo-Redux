@@ -1,4 +1,4 @@
-import { ITodo } from './../shared/models/ITodo.interface';
+import {  select } from 'ng2-redux';
 import { Component, OnInit } from '@angular/core';
 import { TodosService } from './todos.service';
 
@@ -9,18 +9,14 @@ import { TodosService } from './todos.service';
 })
 export class TodosComponent implements OnInit {
 
-  todos: ITodo[];
+  @select() isLoading;
+  @select() error
 
   constructor(private todoService: TodosService) { }
 
   ngOnInit() {
-    this.todoService.getAll().subscribe((result) => {
-      this.todos = result;
-    })
+    this.todoService.loadTodos();
   }
 
-  addItem(item: string) {
-    this.todoService.addTodo(item).subscribe();
-  }
 
 }

@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { IAppStore, rootReducer, INITIAL_STATE } from './store';
 import { NgRedux, NgReduxModule } from 'ng2-redux';
+import { DevToolsExtension } from 'ng2-redux';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { NgRedux, NgReduxModule } from 'ng2-redux';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(private ngRedux: NgRedux<IAppStore>) {
-    this.ngRedux.configureStore(rootReducer, INITIAL_STATE);
+  constructor(private ngRedux: NgRedux<IAppStore>, devTools: DevToolsExtension) {
+    this.ngRedux.configureStore(rootReducer, INITIAL_STATE, [], [devTools.enhancer()]);
   }
 }

@@ -36,8 +36,8 @@ let add = (req, res) => {
         isCompleted: false
     });
     newTodo.save()
-        .then(() => {
-            res.status(200);
+        .then((todo) => {
+            res.status(200).send(todo);
         }).catch((err) => {
             res.status(400).send(err);
         })
