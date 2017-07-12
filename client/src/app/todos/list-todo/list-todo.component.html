@@ -1,3 +1,14 @@
 <ul class="list-group" [@listAnimation]="(todos | async)?.length">
-  <li class="list-group-item" *ngFor="let item of todos | async">{{item.title}}</li>
+  <li class="list-group-item" *ngFor="let item of todos | async">
+    <label (click)="toggleTodo(item)" [class.completed]="item.isCompleted" > {{item.title}} </label>
+    <button type="button" class="btn btn-sm btn-danger" (click)="deleteItem(item)">Delete</button>
+  </li>
 </ul>
+
+<div>
+  All Count: {{ (todos | async).length }}
+</div>
+
+<div>
+  Completed Count: {{ (todos | async) | completedOnly }}
+</div>

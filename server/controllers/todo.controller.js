@@ -43,7 +43,30 @@ let add = (req, res) => {
         })
 }
 
+let deleteTodo = (req, res) => {
+    let _id = req.params.id;
+    Todo.findByIdAndRemove(_id)
+        .then((d) => {
+            res.status(200).send(d);
+        }).catch((err) => {
+            res.status(400).send(err);
+        })
+}
+
+let update = (req, res) => {
+    let _id = req.params.id;
+    let todo = req.body;
+    Todo.findByIdAndUpdate(_id, { isCompleted: todo.isCompleted })
+        .then((d) => {
+            console.log('data', d);
+            res.status(200).send(d);
+        }).catch((err) => {
+            res.status(400).send(err);
+        })
+}
+
+
 
 module.exports = {
-    getAll, seed, add
+    getAll, seed, add, deleteTodo, update
 }

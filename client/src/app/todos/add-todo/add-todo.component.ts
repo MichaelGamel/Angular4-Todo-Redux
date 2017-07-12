@@ -1,5 +1,5 @@
+import { IAppState } from './../../root.reducer';
 import { TodosService } from './../todos.service';
-import { IAppStore } from './../../store';
 import { NgRedux } from 'ng2-redux';
 import { Component } from '@angular/core';
 import { ExplainerAnim } from '../../shared/animation/animate-inputs';
@@ -12,7 +12,7 @@ import { ExplainerAnim } from '../../shared/animation/animate-inputs';
 })
 export class AddTodoComponent {
 
-  constructor(private todoService: TodosService, private ngRedux: NgRedux<IAppStore>) { }
+  constructor(private todoService: TodosService, private ngRedux: NgRedux<IAppState>) { }
 
   submit(item: HTMLInputElement) {
     this.todoService.addTodo(item.value);

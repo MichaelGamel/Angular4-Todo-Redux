@@ -1,4 +1,5 @@
-import {  select } from 'ng2-redux';
+import { IAppState } from './../root.reducer';
+import { select } from 'ng2-redux';
 import { Component, OnInit } from '@angular/core';
 import { TodosService } from './todos.service';
 
@@ -9,12 +10,13 @@ import { TodosService } from './todos.service';
 })
 export class TodosComponent implements OnInit {
 
-  @select() isLoading;
-  @select() error
+  @select((s: IAppState) => s.todo.isLoading) isLoading;
+  @select((s: IAppState) => s.todo.error) error
 
   constructor(private todoService: TodosService) { }
 
   ngOnInit() {
+    
     this.todoService.loadTodos();
   }
 

@@ -10,5 +10,9 @@ router.get('/', todoController.getAll);
 
 router.post('/', todoController.add);
 
+router.delete('/:id', todoController.deleteTodo);
+
+router.put('/:id', todoController.update);
+
 
 module.exports = router;
