@@ -1,0 +1,12 @@
+.list-group{
+        margin-top: 10px
+}
+.btn-sm{
+        margin-top: -5px;
+        float: right;
+}
+
+
+.completed { 
+  text-decoration: line-through;
+}
