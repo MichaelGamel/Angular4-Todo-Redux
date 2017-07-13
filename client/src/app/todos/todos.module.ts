@@ -1,3 +1,4 @@
+import { CompletedOnlyPipe } from './../shared/pipes/completed-count.pipe';
 import { TodosService } from './todos.service';
 import { TodosRoutingModule } from './todo-routing.module';
 import { NgModule } from '@angular/core';
@@ -11,7 +12,7 @@ import { ListTodoComponent } from './list-todo/list-todo.component';
     CommonModule,
     TodosRoutingModule
   ],
-  declarations: [TodosComponent, AddTodoComponent, ListTodoComponent],
-  providers:[TodosService]
+  declarations: [TodosComponent, AddTodoComponent, ListTodoComponent, CompletedOnlyPipe],
+  providers: [TodosService]
 })
 export class TodosModule { }

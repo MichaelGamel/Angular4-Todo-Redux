@@ -27,6 +27,7 @@
     "ng2-redux": "^5.1.2",
     "ngx-bootstrap": "^1.7.1",
     "redux": "^3.7.1",
+    "redux-logger": "^3.0.6",
     "rxjs": "^5.4.1",
     "tassign": "^1.0.0",
     "web-animations-js": "^2.2.5",

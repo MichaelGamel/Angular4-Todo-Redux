@@ -1,2 +1,4 @@
 <app-add-todo (sendItem)="addItem($event)"></app-add-todo>
-<app-list-todo [todos]="todos"></app-list-todo>
+<app-list-todo></app-list-todo>
+<div *ngIf="isLoading | async">Loading...</div>
+<div> {{ error | async }} </div>

@@ -1,36 +1,21 @@
-import { trigger, transition, query, style, stagger, animate } from '@angular/animations';
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { IAppState } from './../../root.reducer';
+import { TodosService } from './../todos.service';
+import { NgRedux } from 'ng2-redux';
+import { Component } from '@angular/core';
+import { ExplainerAnim } from '../../shared/animation/animate-inputs';
 
 @Component({
   selector: 'app-add-todo',
   templateUrl: './add-todo.component.html',
   styleUrls: ['./add-todo.component.css'],
-  animations: [
-    trigger('explainerAnim', [
-      transition('* => *', [
-        query('.input-group', style({ opacity: 0, transform: 'translateX(-40px)' })),
-        query('.input-group', stagger('500ms', [
-          animate('500ms ease-out', style({ opacity: 1, transform: 'translateX(0)' })),
-        ])),
-        query('.input-group', [
-          animate(1000, style('*'))
-        ])
-      ])
-    ])
-  ]
+  animations: ExplainerAnim
 })
-export class AddTodoComponent implements OnInit {
+export class AddTodoComponent {
 
-  @Output()
-  sendItem: EventEmitter<string> = new EventEmitter<string>();
-
-  constructor() { }
-
-  ngOnInit() {
-  }
+  constructor(private todoService: TodosService, private ngRedux: NgRedux<IAppState>) { }
 
   submit(item: HTMLInputElement) {
-    this.sendItem.emit(item.value);
+    this.todoService.addTodo(item.value);
     item.value = '';
     item.focus();
   }
